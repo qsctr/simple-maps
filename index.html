@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#388E3C">
+    <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <link rel="import" href="imports.html">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.png" sizes="32x32" type="image/png">
+    <title>
+      Simple Maps
+    </title>
+  </head>
+  
+
+  <body fullbleed unresolved>
+    <template is="auto-binding" id="template">
+      <core-drawer-panel rightDrawer forceNarrow disableEdgeSwipe>
+        <core-header-panel main>
+          <core-toolbar class="medium-tall">
+            <core-icon icon="maps:map"></core-icon>
+            <div>
+              Simple Maps
+            </div>
+            <div flex></div>
+            <paper-icon-button icon="clear" id="ls-clear"></paper-icon-button>
+            <paper-icon-button icon="help" id="about-icon"></paper-icon-button>
+            <paper-icon-button icon="settings" core-drawer-toggle
+            ></paper-icon-button>
+            <div flex class="middle"></div>
+            <paper-icon-button icon="add" class="middle" id="zoom-in"
+            ></paper-icon-button>
+            <paper-icon-button icon="remove" class="middle" id="zoom-out"
+            ></paper-icon-button>
+            <paper-slider class="middle" min="0" max="20" value="{{zoomLevel}}"
+            title="zoom" id="zoom-slider"></paper-slider>
+          </core-toolbar>
+          <google-map id="map" fit disableDefaultUI="true" zoomable="{{zoomOn}}"
+          zoom="{{zoomLevel}}"></google-map>
+        </core-header-panel>
+        <core-header-panel drawer>
+          <core-toolbar class="medium-tall">
+            <div>
+              Settings
+            </div>
+          </core-toolbar>
+          <div fit id="settings-menu" vertical layout>
+            <div class="list-tile-single" horizontal layout center>
+              <div class="subheader">
+                Controls
+              </div>
+            </div>
+            <div class="list-tile-double" horizontal layout center>
+              <div class="list-text" vertical layout>
+                <div>
+                  Show default Google Maps controls
+                </div>
+                <div class="list-secondary">
+                  The only way to access Street View.
+                </div>
+              </div>
+              <div flex></div>
+              <paper-checkbox class="list-control-double" checked="{{defaultUI}}"
+              ></paper-checkbox>
+            </div>
+            <div class="list-tile-single" horizontal layout center>
+              <div class="list-text" horizontal layout center>
+                <div>Show</div>
+                <core-icon icon="add" class="inline"></core-icon>
+                <div>and</div>
+                <core-icon icon="remove" class="inline"></core-icon>
+                <div>buttons</div>
+              </div>
+              <div flex></div>
+              <paper-checkbox id="zoom-buttons-checkbox" class="list-control-single" checked="true"
+              ></paper-checkbox>
+            </div>
+            <div class="list-tile-single" horizontal layout center>
+              <div class="subheader">
+                Zoom
+              </div>
+            </div>
+            <div class="list-tile-double" horizontal layout center>
+              <div class="list-text">
+                Enable zooming by scrolling on the map
+              </div>
+              <div flex></div>
+              <paper-checkbox class="list-control-double" checked="{{zoomOn}}"
+              ></paper-checkbox>
+            </div>
+            <div class="list-tile-triple" horizontal layout center>
+              <div class="list-text" vertical layout>
+                <div>
+                  Initial zoom level
+                </div>
+                <div class="list-secondary">
+                  The zoom level displayed at startup. Default is 10.
+                </div>
+              </div>
+              <div flex></div>
+              <paper-input-decorator class="list-input"
+              id="init-zoom-decor">
+                <input is="core-input" type="number" min="0" max="20"
+                id="initial-zoom" value="{{initialZoom}}">
+              </paper-input-decorator>
+            </div>
+            <core-collapse id="init-zoom-error">
+              <div class="error">
+                Zoom level must be a number between 0 and 20 (inclusive).
+              </div>
+            </core-collapse>
+          </div>
+        </core-header-panel>
+      </core-drawer-panel>
+
+      <!--dialog-->
+      <paper-dialog id="about-dialog" transition="core-transition-center">
+        <div horizontal layout>
+          <div flex></div>
+          <paper-icon-button icon="close" class="black-54" core-overlay-toggle
+          ></paper-icon-button>
+        </div>
+        <div id="about">
+          <div id="para-container">
+            <p>
+            The source code of this website is
+            <a href="http://www.github.com/qsctr/simple-maps">on Github</a>.
+            </p>
+            <p>
+              This app was made using
+              <a href="http://www.polymer-project.org">Polymer</a>
+              and the
+              <a
+  href="http://googlewebcomponents.github.io/google-map/components/google-map">
+                Google Maps web components element</a>,
+              which uses the
+              <a href="http://developers.google.com/maps/web">Google Maps API</a>.
+            </p>
+            <p>
+              This is a test of the google-map element and Polymer. For the real
+              Google Maps website click the big maps icon below.
+            </p>
+          </div>
+          <div horizontal around-justified layout id="images-container">
+            <paper-button>
+              <a href="http://www.polymer-project.org">
+                <core-image src="images/polymer.svg" sizing="contain"
+                class="link-image"></core-image>
+              </a>
+            </paper-button>
+            <paper-button>
+              <a href="http://maps.google.com">
+                <core-image src="images/maps.png" sizing="contain" 
+                class="link-image"></core-image>
+              </a>
+            </paper-button>
+          </div>
+        </div>
+      </paper-dialog>
+
+      <!--non-visual elements-->
+      <core-localstorage name="defaultUI" id="defaultUI" value="{{defaultUI}}"></core-localstorage>
+      <core-localstorage name="showZoomButtons" id="showZoomButtons" value="" useRaw></core-localstorage>
+      <core-localstorage name="zoomOn" id="zoomOn" value="{{zoomOn}}"></core-localstorage>
+      <core-localstorage name="initialZoom" id="initialZoom"  value="{{initialZoom}}"></core-localstorage>
+    </template>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,103 @@
+/*material colors:
+primary: Green 500, #4CAF50
+  Green 700, #388E3C
+accent: Deep orange 200, #FF6E40*/
+html, body {
+  height: 100%;
+  margin: 0;
+}
+core-header-panel {
+  height: 100%;
+}
+body{
+  font-family: 'Roboto', Arial;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+core-toolbar{
+  background-color: #4CAF50;
+  color: white;
+  font-weight: 300;
+}
+paper-slider::shadow #sliderBar::shadow #activeProgress {
+  background-color: #FF6E40;
+}
+paper-slider::shadow #sliderKnobInner {
+  background-color: #FF6E40;
+}
+
+#settings-menu{
+  background-color: white;
+  padding-top: 8px;
+}
+.list-tile-single{
+  height: 36px;
+}
+.list-tile-double{
+  height: 54px;
+}
+.list-tile-triple{
+  height: 66px;
+}
+.subheader{
+  margin-left: 16px;
+  color: #4CAF50;
+  font-size: 14px;
+}
+.list-text{
+  margin-left: 16px;
+  margin-right: 16px;
+}
+.inline{
+  width: 16px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+.list-secondary{
+  margin-top: 4px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.54);
+}
+.list-control-single{
+  margin-right: 16px;
+}
+.list-control-double{
+  margin-right: 20px;
+}
+.list-input{
+  width: 60px;
+  margin-right: 16px;
+}
+.error{
+  color: #F44336;
+  font-size: 14px;
+  text-align: right;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+paper-checkbox::shadow #ink[checked] {
+  color: #FF6E40;
+}
+paper-checkbox::shadow #checkbox.checked {
+  background-color: #FF6E40;
+  border-color: #FF6E40;
+}
+paper-input-decorator /deep/ .focused-underline {
+    background-color: #FF6E40;
+}
+
+html /deep/ paper-dialog::shadow #scroller {
+  width: 400px;
+}
+html /deep/ paper-dialog .black-54 {
+  color: rgba(0, 0, 0, 0.54);
+}
+html /deep/ paper-dialog p a{
+  color: #FF6E40;
+  text-decoration: none;
+}
+html /deep/ .link-image{
+  width: 100px;
+  height: 100px;
+}
