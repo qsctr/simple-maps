@@ -27,7 +27,8 @@
               Simple Maps
             </div>
             <div flex></div>
-            <paper-icon-button icon="clear" id="ls-clear"></paper-icon-button>
+            <paper-icon-button icon="clear" id="ls-clear"
+            title="Do not click"></paper-icon-button>
             <paper-icon-button icon="help" id="about-icon"></paper-icon-button>
             <paper-icon-button icon="settings" core-drawer-toggle
             ></paper-icon-button>
@@ -47,6 +48,9 @@
             <div>
               Settings
             </div>
+            <div class="middle secondary">
+              All settings are autosaved in HTML5 Local Storage
+            </div>
           </core-toolbar>
           <div fit id="settings-menu" vertical layout>
             <div class="list-tile-single" horizontal layout center>
@@ -55,13 +59,8 @@
               </div>
             </div>
             <div class="list-tile-double" horizontal layout center>
-              <div class="list-text" vertical layout>
-                <div>
+              <div class="list-text">
                   Show default Google Maps controls
-                </div>
-                <div class="list-secondary">
-                  The only way to access Street View.
-                </div>
               </div>
               <div flex></div>
               <paper-checkbox class="list-control-double" checked="{{defaultUI}}"
@@ -92,14 +91,9 @@
               <paper-checkbox class="list-control-double" checked="{{zoomOn}}"
               ></paper-checkbox>
             </div>
-            <div class="list-tile-triple" horizontal layout center>
-              <div class="list-text" vertical layout>
-                <div>
-                  Initial zoom level
-                </div>
-                <div class="list-secondary">
-                  The zoom level displayed at startup. Default is 10.
-                </div>
+            <div class="list-tile-single" horizontal layout center>
+              <div class="list-text">
+                Zoom on startup
               </div>
               <div flex></div>
               <paper-input-decorator class="list-input"
@@ -109,8 +103,10 @@
               </paper-input-decorator>
             </div>
             <core-collapse id="init-zoom-error">
-              <div class="error">
-                Zoom level must be a number between 0 and 20 (inclusive).
+              <div class="error" vertical layout>
+                <div class="inner-error">
+                  Zoom level must be a number between 0 and 20 (inclusive)
+                </div>
               </div>
             </core-collapse>
           </div>

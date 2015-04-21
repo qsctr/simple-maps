@@ -58,12 +58,25 @@ document.addEventListener("template-bound", function(){
     }
   });
   document.querySelector("#initialZoom").addEventListener("core-localstorage-load", function(){
-    if(template.initialZoom <= 20 && template.initialZoom >= 0){
+    if(template.initialZoom === null){
+      template.initialZoom = 10;
+      console.log("zoom is null");
+      console.log("zoom is " + template.initialZoom);
+    }
+    else if(template.initialZoom <= 20 && template.initialZoom >= 0){
+      console.log(template.initialZoom);
+      console.log(template.initialZoom !== null);
+      console.log(template.initialZoom <= 20);
+      console.log(template.initialZoom >= 0);
+      console.log("zoom valid");
     }
     else{
       template.initialZoom = 10;
+      console.log("zoom invalid");
+      console.log("zoom is " + template.initalZoom);
     }
     template.zoomLevel = template.initialZoom;
+    console.log("zoom is now " + template.zoomLevel);
   });
   document.querySelector("#settings-menu").addEventListener("change", function(){
     checkDefaultUI();

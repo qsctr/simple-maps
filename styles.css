@@ -26,19 +26,21 @@ paper-slider::shadow #sliderBar::shadow #activeProgress {
 paper-slider::shadow #sliderKnobInner {
   background-color: #FF6E40;
 }
+.secondary{
+  font-size: 14px;
+}
 
 #settings-menu{
   background-color: white;
-  padding-top: 8px;
 }
 .list-tile-single{
-  height: 36px;
+  height: 48px;
 }
 .list-tile-double{
-  height: 54px;
+  height: 72px;
 }
 .list-tile-triple{
-  height: 66px;
+  height: 88px;
 }
 .subheader{
   margin-left: 16px;
@@ -66,7 +68,7 @@ paper-slider::shadow #sliderKnobInner {
   margin-right: 20px;
 }
 .list-input{
-  width: 60px;
+  width: 40px;
   margin-right: 16px;
 }
 .error{
@@ -75,6 +77,11 @@ paper-slider::shadow #sliderKnobInner {
   text-align: right;
   margin-left: 16px;
   margin-right: 16px;
+  height: 48px;
+}
+.inner-error{
+  margin-top: auto;
+  margin-bottom: auto;
 }
 paper-checkbox::shadow #ink[checked] {
   color: #FF6E40;
