@@ -32,6 +32,7 @@ paper-slider::shadow #sliderKnobInner {
 
 #settings-menu{
   background-color: white;
+  padding-bottom: 8px;
 }
 .list-tile-single{
   height: 48px;
@@ -94,17 +95,46 @@ paper-input-decorator /deep/ .focused-underline {
     background-color: #FF6E40;
 }
 
-html /deep/ paper-dialog::shadow #scroller {
+html /deep/ #about-dialog::shadow #scroller {
   width: 400px;
 }
-html /deep/ paper-dialog .black-54 {
+html /deep/ .black-54 {
   color: rgba(0, 0, 0, 0.54);
 }
-html /deep/ paper-dialog p a{
+html /deep/ p a{
   color: #FF6E40;
   text-decoration: none;
 }
 html /deep/ .link-image{
   width: 100px;
   height: 100px;
+}
+html /deep/ material-card{
+  padding: 0;
+}
+html /deep/ #theme-picker material-card::shadow .content{
+  width: 72px;
+  height: 72px;
+  border-radius: 2px;
+}
+html /deep/ #theme-picker material-card{
+  margin-left: 8px;
+  margin-right: 8px;
+}
+html /deep/ #theme-picker::shadow #scroller{
+  padding-bottom: 32px;
+  padding-top: 0;
+}
+html /deep/ #green-card{
+  background-color: #4CAF50;
+}
+html /deep/ #indigo-card{
+  background-color: #3F51B5;
+}
+html /deep/ #brown-card{
+  background-color: #795548;
+}
+html /deep/ #theme-picker h2{
+  font-size: 24px;
+  font-weight: 300;
 }

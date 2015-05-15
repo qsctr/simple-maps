@@ -1,0 +1,38 @@
+{
+  "name": "material-card",
+  "authors": [
+    "Marcel Buchholz <marcel.buchholz@gmail.com>"
+  ],
+  "description": "A simple card custom element built with Polymer, inspired by Google's Material Design guidlines",
+  "main": "material-card.html",
+  "keywords": [
+    "material",
+    "card",
+    "custom-element",
+    "web-components",
+    "polymer"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/lemabu/material-card",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.5",
+    "paper-shadow": "Polymer/paper-shadow#~0.5"
+  },
+  "_release": "d85eb1b572",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "d85eb1b5728c1b55e7822125cf34a8d491199f65"
+  },
+  "_source": "git://github.com/lemabu/material-card.git",
+  "_target": "*",
+  "_originalSource": "material-card",
+  "_direct": true
+}

@@ -109,11 +109,54 @@
                 </div>
               </div>
             </core-collapse>
+            <div class="list-tile-single" horizontal layout center>
+              <div class="subheader">
+                Theme
+              </div>
+            </div>
+            <div class="list-tile-single" horizontal layout center relative>
+              <div class="list-text">
+                <div>
+                  Theme color
+                </div>
+                <div class="list-secondary">
+                  Green
+                </div>
+              </div>
+              <paper-ripple fit id="theme-menu-ripple"></paper-ripple>
+            </div>
           </div>
         </core-header-panel>
       </core-drawer-panel>
 
-      <!--dialog-->
+      <paper-dialog id="theme-picker" transition="core-transition-center">
+        <h2>
+          Choose a theme color
+        </h2>
+        <div horizontal center-justified wrap layout>
+          <material-card id="green-card" autoraise=true>
+            <div fit horizontal center center-justified layout>
+              <div>
+                Green
+              </div>
+            </div>
+          </material-card>
+          <material-card id="indigo-card" autoraise=true>
+            <div fit horizontal center center-justified layout>
+              <div>
+                Indigo
+              </div>
+            </div>
+          </material-card>
+          <material-card id="brown-card" autoraise=true>
+            <div fit horizontal center center-justified layout>
+              <div>
+                Brown
+              </div>
+            </div>
+          </material-card>
+        </div>
+      </paper-dialog>
       <paper-dialog id="about-dialog" transition="core-transition-center">
         <div horizontal layout>
           <div flex></div>
