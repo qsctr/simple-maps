@@ -120,7 +120,7 @@
                   Theme color
                 </div>
                 <div class="list-secondary">
-                  Green
+                  {{theme}}
                 </div>
               </div>
               <paper-ripple fit id="theme-menu-ripple"></paper-ripple>
@@ -206,6 +206,7 @@
       <core-localstorage name="showZoomButtons" id="showZoomButtons" value="" useRaw></core-localstorage>
       <core-localstorage name="zoomOn" id="zoomOn" value="{{zoomOn}}"></core-localstorage>
       <core-localstorage name="initialZoom" id="initialZoom"  value="{{initialZoom}}"></core-localstorage>
+      <core-localstorage name="theme" id="theme" value={{theme}}></core-localstorage>
     </template>
     <script src="script.js"></script>
   </body>

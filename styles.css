@@ -2,6 +2,11 @@
 primary: Green 500, #4CAF50
   Green 700, #388E3C
 accent: Deep orange 200, #FF6E40*/
+
+/*theme selectors:
+core-toolbar: background-color
+.subheader: color*/
+
 html, body {
   height: 100%;
   margin: 0;
@@ -137,4 +142,7 @@ html /deep/ #brown-card{
 html /deep/ #theme-picker h2{
   font-size: 24px;
   font-weight: 300;
+}
+html /deep/ .white{
+  color: white;
 }
