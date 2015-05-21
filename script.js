@@ -121,6 +121,15 @@ document.addEventListener("template-bound", function () {
     }
     template.zoomLevel = template.initialZoom;
   });
+  /*
+  document.querySelector("#smallScreen").addEventListener("core-media-change", function () {
+    if (template.smallScreen === true) {
+      //grey out one-row option
+    }
+    else {
+      //do stuff
+    }
+  });*/
   
   document.querySelector("#settings-menu").addEventListener("change", function () {
     checkDefaultUI();

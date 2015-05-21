@@ -38,15 +38,19 @@ paper-slider::shadow #sliderKnobInner {
 #settings-menu{
   background-color: white;
   padding-bottom: 8px;
+  overflow: scroll;
 }
 .list-tile-single{
   height: 48px;
+  min-height: 48px;
 }
 .list-tile-double{
   height: 72px;
+  min-height: 72px;
 }
 .list-tile-triple{
   height: 88px;
+  min-height: 88px;
 }
 .subheader{
   margin-left: 16px;
@@ -57,6 +61,7 @@ paper-slider::shadow #sliderKnobInner {
   margin-left: 16px;
   margin-right: 16px;
 }
+
 .inline{
   width: 16px;
   margin-left: 4px;
@@ -70,8 +75,9 @@ paper-slider::shadow #sliderKnobInner {
 .list-control-single{
   margin-right: 16px;
 }
-.list-control-double{
+.list-control{
   margin-right: 20px;
+  min-width: 18px;
 }
 .list-input{
   width: 40px;

@@ -22,16 +22,13 @@
       <core-drawer-panel rightDrawer forceNarrow disableEdgeSwipe>
         <core-header-panel main>
           <core-toolbar class="medium-tall">
+          
             <core-icon icon="maps:map"></core-icon>
             <div>
               Simple Maps
             </div>
             <div flex></div>
-            <paper-icon-button icon="clear" id="ls-clear"
-            title="Do not click"></paper-icon-button>
-            <paper-icon-button icon="help" id="about-icon"></paper-icon-button>
-            <paper-icon-button icon="settings" core-drawer-toggle
-            ></paper-icon-button>
+              
             <div flex class="middle"></div>
             <paper-icon-button icon="add" class="middle" id="zoom-in"
             ></paper-icon-button>
@@ -39,6 +36,13 @@
             ></paper-icon-button>
             <paper-slider class="middle" min="0" max="20" value="{{zoomLevel}}"
             title="zoom" id="zoom-slider"></paper-slider>
+            
+            <paper-icon-button icon="clear" id="ls-clear"
+            title="Do not click"></paper-icon-button>
+            <paper-icon-button icon="help" id="about-icon"></paper-icon-button>
+            <paper-icon-button icon="settings" core-drawer-toggle
+            ></paper-icon-button>
+            
           </core-toolbar>
           <google-map id="map" fit disableDefaultUI="true" zoomable="{{zoomOn}}"
           zoom="{{zoomLevel}}"></google-map>
@@ -63,7 +67,7 @@
                   Show default Google Maps controls
               </div>
               <div flex></div>
-              <paper-checkbox class="list-control-double" checked="{{defaultUI}}"
+              <paper-checkbox class="list-control" checked="{{defaultUI}}"
               ></paper-checkbox>
             </div>
             <div class="list-tile-single" horizontal layout center>
@@ -75,8 +79,15 @@
                 <div>buttons</div>
               </div>
               <div flex></div>
-              <paper-checkbox id="zoom-buttons-checkbox" class="list-control-single" checked="true"
+              <paper-checkbox id="zoom-buttons-checkbox" class="list-control" checked="true"
               ></paper-checkbox>
+            </div>
+            <div class="list-tile-double" horizontal layout center>
+              <div class="list-text">
+                Show controls on separate row
+              </div>
+              <div flex></div>
+              <paper-checkbox class="list-control" checked="true"></paper-checkbox>
             </div>
             <div class="list-tile-single" horizontal layout center>
               <div class="subheader">
@@ -88,7 +99,7 @@
                 Enable zooming by scrolling on the map
               </div>
               <div flex></div>
-              <paper-checkbox class="list-control-double" checked="{{zoomOn}}"
+              <paper-checkbox class="list-control" checked="{{zoomOn}}"
               ></paper-checkbox>
             </div>
             <div class="list-tile-single" horizontal layout center>
@@ -202,6 +213,7 @@
       </paper-dialog>
 
       <!--non-visual elements-->
+      <core-media-query id="smallScreen" query="min-width: 400px" queryMatches="{{smallScreen}}"></core-media-query>
       <core-localstorage name="defaultUI" id="defaultUI" value="{{defaultUI}}"></core-localstorage>
       <core-localstorage name="showZoomButtons" id="showZoomButtons" value="" useRaw></core-localstorage>
       <core-localstorage name="zoomOn" id="zoomOn" value="{{zoomOn}}"></core-localstorage>
