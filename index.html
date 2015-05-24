@@ -21,7 +21,7 @@
     <template is="auto-binding" id="template">
       <core-drawer-panel rightDrawer forceNarrow disableEdgeSwipe>
         <core-header-panel main>
-          <core-toolbar class="medium-tall">
+          <core-toolbar class="medium-tall" id="main-toolbar">
           
             <core-icon icon="maps:map"></core-icon>
             <div>
@@ -29,12 +29,12 @@
             </div>
             <div flex></div>
               
-            <div flex class="middle"></div>
-            <paper-icon-button icon="add" class="middle" id="zoom-in"
+            <div flex class="middle can-middle"></div>
+            <paper-icon-button icon="add" class="middle can-middle" id="zoom-in"
             ></paper-icon-button>
-            <paper-icon-button icon="remove" class="middle" id="zoom-out"
+            <paper-icon-button icon="remove" class="middle can-middle" id="zoom-out"
             ></paper-icon-button>
-            <paper-slider class="middle" min="0" max="20" value="{{zoomLevel}}"
+            <paper-slider class="middle can-middle" min="0" max="20" value="{{zoomLevel}}"
             title="zoom" id="zoom-slider"></paper-slider>
             
             <paper-icon-button icon="clear" id="ls-clear"
@@ -79,15 +79,14 @@
                 <div>buttons</div>
               </div>
               <div flex></div>
-              <paper-checkbox id="zoom-buttons-checkbox" class="list-control" checked="true"
-              ></paper-checkbox>
+              <paper-checkbox id="zoom-buttons-checkbox" class="list-control" checked="true"></paper-checkbox>
             </div>
-            <div class="list-tile-double" horizontal layout center>
+            <div id="separate-row-tile" class="list-tile-double" horizontal layout center>
               <div class="list-text">
                 Show controls on separate row
               </div>
               <div flex></div>
-              <paper-checkbox class="list-control" checked="true"></paper-checkbox>
+              <paper-checkbox id="separate-row-checkbox" class="list-control" checked></paper-checkbox>
             </div>
             <div class="list-tile-single" horizontal layout center>
               <div class="subheader">
@@ -213,9 +212,10 @@
       </paper-dialog>
 
       <!--non-visual elements-->
-      <core-media-query id="smallScreen" query="min-width: 400px" queryMatches="{{smallScreen}}"></core-media-query>
+      <core-media-query id="smallScreen" query="max-width: 800px" queryMatches="{{smallScreen}}"></core-media-query>
       <core-localstorage name="defaultUI" id="defaultUI" value="{{defaultUI}}"></core-localstorage>
       <core-localstorage name="showZoomButtons" id="showZoomButtons" value="" useRaw></core-localstorage>
+      <core-localstorage name="separateRow" id="separateRow" value="" useRaw></core-localstorage>
       <core-localstorage name="zoomOn" id="zoomOn" value="{{zoomOn}}"></core-localstorage>
       <core-localstorage name="initialZoom" id="initialZoom"  value="{{initialZoom}}"></core-localstorage>
       <core-localstorage name="theme" id="theme" value={{theme}}></core-localstorage>

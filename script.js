@@ -3,11 +3,15 @@ document.addEventListener("template-bound", function () {
   //set up variables and functions
   var template = document.querySelector("#template");
   var map = document.querySelector("#map");
+  var mainToolbar = document.querySelector("#main-toolbar");
   var allToolbars = document.querySelectorAll("core-toolbar");
   var slider = document.querySelector("#zoom-slider");
   var zoomInButton = document.querySelector("#zoom-in");
   var zoomOutButton = document.querySelector("#zoom-out");
+  var canMiddle = document.querySelectorAll(".can-middle");
   var allSubheaders = document.querySelectorAll(".subheader");
+  var separateRowTile = document.querySelector("#separate-row-tile");
+  var separateRowCheckbox = document.querySelector("#separate-row-checkbox");
   var initZoom = document.querySelector("#initial-zoom");
   var zoomError = document.querySelector("#init-zoom-error");
   var deepThemePicker = document.querySelector("html /deep/ #theme-picker");
@@ -17,6 +21,8 @@ document.addEventListener("template-bound", function () {
   var greenCard = document.querySelector("html /deep/ #green-card");
   var indigoCard = document.querySelector("html /deep/ #indigo-card");
   var brownCard = document.querySelector("html /deep/ #brown-card");
+  var separateRow = document.querySelector("#separateRow");
+  var showZoomButtons = document.querySelector("#showZoomButtons");
   
   var checkDefaultUI = function () {
     if (template.defaultUI) {
@@ -35,6 +41,24 @@ document.addEventListener("template-bound", function () {
   var ZBDisplayOff = function () {
     zoomInButton.style.display = "none";
     zoomOutButton.style.display = "none";
+  };
+  
+  var separateRowOn = function () {
+    mainToolbar.classList.add("medium-tall");
+    var count = 0;
+    while (count < canMiddle.length) {
+      canMiddle[count].classList.add("middle");
+      count++;
+    }
+  };
+  
+  var separateRowOff = function () {
+    var count = 0;
+    while (count < canMiddle.length) {
+      canMiddle[count].classList.remove("middle");
+      count++;
+    }
+    mainToolbar.classList.remove("medium-tall");
   };
   
   var checkZoomButtonsColor = function () {
@@ -109,6 +133,20 @@ document.addEventListener("template-bound", function () {
     }
   });
   
+  document.querySelector("#separateRow").addEventListener("core-localstorage-load", function () {
+    if (document.querySelector("#separateRow").value === true ||
+      document.querySelector("#separateRow").value === null ||
+      localStorage.getItem("separateRow") === null ||
+      template.smallScreen === true) {
+      document.querySelector("#separate-row-checkbox").checked = true;
+      separateRowOn();
+    }
+    else {
+      document.querySelector("#separate-row-checkbox").checked = false;
+      separateRowOff();
+    }
+  });
+  
   document.querySelector("#initialZoom").addEventListener("core-localstorage-load", function () {
     if (template.initialZoom === null) {
       template.initialZoom = 10;
@@ -121,26 +159,43 @@ document.addEventListener("template-bound", function () {
     }
     template.zoomLevel = template.initialZoom;
   });
-  /*
+  
   document.querySelector("#smallScreen").addEventListener("core-media-change", function () {
     if (template.smallScreen === true) {
-      //grey out one-row option
+      //grey out
+      separateRowTile.style.color = "rgba(0, 0, 0, 0.26)";
+      separateRowCheckbox.checked = true;
+      separateRowOn();
+      separateRowCheckbox.disabled = true;
     }
     else {
-      //do stuff
+      //black in?
+      separateRowTile.style.color = "rgba(0, 0, 0, 0.87)";
+      separateRowCheckbox.disabled = false;
+      if (localStorage.getItem("separateRow") === "false") {
+        separateRowOff();
+      }
     }
-  });*/
+  });
   
   document.querySelector("#settings-menu").addEventListener("change", function () {
     checkDefaultUI();
+    
     if (document.querySelector("#zoom-buttons-checkbox").checked === true) {
       ZBDisplayOn();
     }
     else {
       ZBDisplayOff();
     }
-    document.querySelector("#showZoomButtons").value =
-    document.querySelector("#zoom-buttons-checkbox").checked;
+    showZoomButtons.value = document.querySelector("#zoom-buttons-checkbox").checked;
+    
+    if (document.querySelector("#separate-row-checkbox").checked === true) {
+      separateRowOn();
+    }
+    else {
+      separateRowOff();
+    }
+    separateRow.value = document.querySelector("#separate-row-checkbox").checked;
   });
   
   document.querySelector("#theme-menu-ripple").addEventListener("core-transitionend", function () {

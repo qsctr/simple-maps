@@ -7,11 +7,11 @@ accent: Deep orange 200, #FF6E40*/
 core-toolbar: background-color
 .subheader: color*/
 
-html, body {
+html, body{  
   height: 100%;
   margin: 0;
 }
-core-header-panel {
+core-header-panel{
   height: 100%;
 }
 body{
@@ -25,10 +25,10 @@ core-toolbar{
   color: white;
   font-weight: 300;
 }
-paper-slider::shadow #sliderBar::shadow #activeProgress {
+paper-slider::shadow #sliderBar::shadow #activeProgress{
   background-color: #FF6E40;
 }
-paper-slider::shadow #sliderKnobInner {
+paper-slider::shadow #sliderKnobInner{
   background-color: #FF6E40;
 }
 .secondary{
@@ -95,21 +95,21 @@ paper-slider::shadow #sliderKnobInner {
   margin-top: auto;
   margin-bottom: auto;
 }
-paper-checkbox::shadow #ink[checked] {
+paper-checkbox::shadow #ink[checked]{
   color: #FF6E40;
 }
-paper-checkbox::shadow #checkbox.checked {
+paper-checkbox::shadow #checkbox.checked{
   background-color: #FF6E40;
   border-color: #FF6E40;
 }
-paper-input-decorator /deep/ .focused-underline {
+paper-input-decorator /deep/ .focused-underline{
     background-color: #FF6E40;
 }
 
-html /deep/ #about-dialog::shadow #scroller {
+html /deep/ #about-dialog::shadow #scroller{
   width: 400px;
 }
-html /deep/ .black-54 {
+html /deep/ .black-54{
   color: rgba(0, 0, 0, 0.54);
 }
 html /deep/ p a{
