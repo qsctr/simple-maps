@@ -249,9 +249,4 @@ document.addEventListener("template-bound", function () {
       document.querySelector("#about-dialog").open();
     }
   });
-
-  //for testing
-  document.querySelector("#ls-clear").addEventListener("click", function () {
-    localStorage.clear();
-  });
 });
