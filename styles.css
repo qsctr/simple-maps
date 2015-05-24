@@ -21,7 +21,7 @@ body{
 }
 
 core-toolbar{
-  background-color: #4CAF50;
+  /*background-color: #4CAF50;*/
   color: white;
   font-weight: 300;
 }
@@ -39,6 +39,7 @@ paper-slider::shadow #sliderKnobInner{
   background-color: white;
   padding-bottom: 8px;
   overflow: scroll;
+  color: rgba(0, 0, 0, 0.87);
 }
 .list-tile-single{
   height: 48px;
@@ -54,7 +55,7 @@ paper-slider::shadow #sliderKnobInner{
 }
 .subheader{
   margin-left: 16px;
-  color: #4CAF50;
+  /*color: #4CAF50;*/
   font-size: 14px;
 }
 .list-text{
