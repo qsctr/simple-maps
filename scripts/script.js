@@ -1,28 +1,4 @@
-document.addEventListener("template-bound", function () {
-  
-  //set up variables and functions
-  var template = document.querySelector("#template");
-  var map = document.querySelector("#map");
-  var mainToolbar = document.querySelector("#main-toolbar");
-  var allToolbars = document.querySelectorAll("core-toolbar");
-  var slider = document.querySelector("#zoom-slider");
-  var zoomInButton = document.querySelector("#zoom-in");
-  var zoomOutButton = document.querySelector("#zoom-out");
-  var canMiddle = document.querySelectorAll(".can-middle");
-  var allSubheaders = document.querySelectorAll(".subheader");
-  var separateRowTile = document.querySelector("#separate-row-tile");
-  var separateRowCheckbox = document.querySelector("#separate-row-checkbox");
-  var initZoom = document.querySelector("#initial-zoom");
-  var zoomError = document.querySelector("#init-zoom-error");
-  var deepThemePicker = document.querySelector("html /deep/ #theme-picker");
-  var green = "#4CAF50";
-  var indigo = "#3F51B5";
-  var brown = "#795548";
-  var greenCard = document.querySelector("html /deep/ #green-card");
-  var indigoCard = document.querySelector("html /deep/ #indigo-card");
-  var brownCard = document.querySelector("html /deep/ #brown-card");
-  var separateRow = document.querySelector("#separateRow");
-  var showZoomButtons = document.querySelector("#showZoomButtons");
+document.addEventListener("vars-set", function () {
   
   var checkDefaultUI = function () {
     if (template.defaultUI) {
@@ -116,43 +92,43 @@ document.addEventListener("template-bound", function () {
   checkTheme();
 
   //add event listeners
-  document.querySelector("#defaultUI").addEventListener("core-localstorage-load", function () {
+  defaultUI.addEventListener("core-localstorage-load", function () {
     checkDefaultUI();
   });
   
-  document.querySelector("#showZoomButtons").addEventListener("core-localstorage-load", function () {
-    if (document.querySelector("#showZoomButtons").value === true ||
-      document.querySelector("#showZoomButtons").value === null ||
+  showZoomButtons.addEventListener("core-localstorage-load", function () {
+    if (showZoomButtons.value === true ||
+      showZoomButtons.value === null ||
       localStorage.getItem("showZoomButtons") === null) {
-      document.querySelector("#zoom-buttons-checkbox").checked = true;
+      zoomButtonsCheckbox.checked = true;
       ZBDisplayOn();
     }
     else {
-      document.querySelector("#zoom-buttons-checkbox").checked = false;
+      zoomButtonsCheckbox.checked = false;
       ZBDisplayOff();
     }
   });
   
-  document.querySelector("#separateRow").addEventListener("core-localstorage-load", function () {
-    if (document.querySelector("#separateRow").value === true ||
-      document.querySelector("#separateRow").value === null ||
+  separateRow.addEventListener("core-localstorage-load", function () {
+    if (separateRow.value === true ||
+      separateRow.value === null ||
       localStorage.getItem("separateRow") === null ||
       template.smallScreen === true) {
-      document.querySelector("#separate-row-checkbox").checked = true;
+      separateRowCheckbox.checked = true;
       separateRowOn();
     }
     else {
-      document.querySelector("#separate-row-checkbox").checked = false;
+      separateRowCheckbox.checked = false;
       separateRowOff();
     }
   });
   
-  document.querySelector("#initialZoom").addEventListener("core-localstorage-load", function () {
+  initZoomLS.addEventListener("core-localstorage-load", function () {
     if (template.initialZoom === null) {
       template.initialZoom = 10;
     }
     else if (template.initialZoom <= 20 && template.initialZoom >= 0) {
-       //this is a comment
+       //everything is ok
     }
     else {
       template.initialZoom = 10;
@@ -160,7 +136,7 @@ document.addEventListener("template-bound", function () {
     template.zoomLevel = template.initialZoom;
   });
   
-  document.querySelector("#smallScreen").addEventListener("core-media-change", function () {
+  smallScreen.addEventListener("core-media-change", function () {
     if (template.smallScreen === true) {
       //grey out
       separateRowTile.style.color = "rgba(0, 0, 0, 0.26)";
@@ -178,29 +154,29 @@ document.addEventListener("template-bound", function () {
     }
   });
   
-  document.querySelector("#settings-menu").addEventListener("change", function () {
+  settingsMenu.addEventListener("change", function () {
     checkDefaultUI();
     
-    if (document.querySelector("#zoom-buttons-checkbox").checked === true) {
+    if (zoomButtonsCheckbox.checked === true) {
       ZBDisplayOn();
     }
     else {
       ZBDisplayOff();
     }
-    showZoomButtons.value = document.querySelector("#zoom-buttons-checkbox").checked;
+    showZoomButtons.value = zoomButtonsCheckbox.checked;
     
-    if (document.querySelector("#separate-row-checkbox").checked === true) {
+    if (separateRowCheckbox.checked === true) {
       separateRowOn();
     }
     else {
       separateRowOff();
     }
-    separateRow.value = document.querySelector("#separate-row-checkbox").checked;
+    separateRow.value = separateRowCheckbox.checked;
   });
   
-  document.querySelector("#theme-menu-ripple").addEventListener("core-transitionend", function () {
-    if (document.querySelector("#theme-picker") !== null) {
-      document.querySelector("#theme-picker").open();
+  themeMenuRipple.addEventListener("core-transitionend", function () {
+    if (lightThemePicker !== null) {
+      lightThemePicker.open();
     }
   });
   
@@ -235,7 +211,7 @@ document.addEventListener("template-bound", function () {
   });
   
   initZoom.addEventListener("input", function () {
-    document.querySelector("#init-zoom-decor").isInvalid = !initZoom.validity.valid;
+    initZoomDecor.isInvalid = !initZoom.validity.valid;
     if (initZoom.validity.valid) {
       zoomError.opened = false;
     }
@@ -244,9 +220,9 @@ document.addEventListener("template-bound", function () {
     }
   });
   
-  document.querySelector("#about-icon").addEventListener("click", function () {
-    if (document.querySelector("#about-dialog") !== null) {
-      document.querySelector("#about-dialog").open();
+  aboutIcon.addEventListener("click", function () {
+    if (lightAboutDialog !== null) {
+      lightAboutDialog.open();
     }
   });
 });
