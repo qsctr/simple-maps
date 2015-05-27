@@ -1,0 +1,6 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+	"javascript.validate.lint.unusedVariables": "ignore",
+	"javascript.validate.lint.unusedFunctions": "ignore",
+	"javascript.validate.lint.undeclaredVariables": "ignore"
+}
