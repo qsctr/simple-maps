@@ -32,10 +32,9 @@
             <div flex class="middle can-middle"></div>
             <paper-icon-button icon="add" class="middle can-middle" id="zoom-in"
             ></paper-icon-button>
-            <paper-icon-button icon="remove" class="middle can-middle" id="zoom-out"
-            ></paper-icon-button>
-            <paper-slider class="middle can-middle" min="0" max="20" value="{{zoomLevel}}"
-            title="zoom" id="zoom-slider"></paper-slider>
+            <paper-icon-button icon="remove" class="middle can-middle" id="zoom-out"></paper-icon-button>
+            <paper-slider class="middle can-middle" min="0" max="20" value="{{zoomLevel}}" title="zoom" id="zoom-slider"></paper-slider>
+            <!--<paper-icon-button icon="maps:my-location" class="middle can-middle" id="location-button"></paper-icon-button>-->
             
             <paper-icon-button icon="help" id="about-icon"></paper-icon-button>
             <paper-icon-button icon="settings" core-drawer-toggle
@@ -220,6 +219,7 @@
     </template>
     <script src="bower_components/prototypejs-bower/prototype.js"></script>
     <script src="scripts/vars.js"></script>
+    <script src="scripts/functions.js"></script>
     <script src="scripts/script.js"></script>
   </body>
 </html>
