@@ -1,57 +1,90 @@
 document.addEventListener("template-bound", function () {
-	//important
+	//template
 	template = document.querySelector("#template");
-	map = document.querySelector("#map");
 	
-	//toolbar(s)
+	//toolbars
 	allToolbars = document.querySelectorAll("core-toolbar");
+	
+	//main toolbar
 	mainToolbar = document.querySelector("#main-toolbar");
-	//top row
-	aboutIcon = document.querySelector("#about-icon");
 	//controls
 	canMiddle = document.querySelectorAll(".can-middle");
-	zoomInButton = document.querySelector("#zoom-in");
-	zoomOutButton = document.querySelector("#zoom-out");
-	slider = document.querySelector("#zoom-slider");
+	zoomInButton = document.querySelector("#zoom-in-button");
+	zoomOutButton = document.querySelector("#zoom-out-button");
+	zoomSlider = document.querySelector("#zoom-slider");
+	//other buttons
+	aboutButton = document.querySelector("#about-button");
+	
+	//map
+	map = document.querySelector("#map");
 	
 	//settings menu
 	settingsMenu = document.querySelector("#settings-menu");
+	//all subheaders
 	allSubheaders = document.querySelectorAll(".subheader");
-	//zoom buttons
-	zoomButtonsCheckbox = document.querySelector("#zoom-buttons-checkbox");
+	//controls subheader
+	controlsSubheaderTile = document.querySelector("#controls-subheader-tile");
+	controlsSubheaderText = document.querySelector("#controls-subheader-text");
+	//default UI
+	defaultUITile = document.querySelector("#defaultUI-tile");
+	defaultUIText = document.querySelector("#defaultUI-text");
+	defaultUIControl = document.querySelector("defaultUI-control");
+	//show zoom buttons
+	showZoomButtonsTile = document.querySelector("#show-zoom-buttons-tile");
+	showZoomButtonsText = document.querySelector("#show-zoom-buttons-text");
+	showZoomButtonsControl = document.querySelector("#show-zoom-buttons-control");
 	//separate row
 	separateRowTile = document.querySelector("#separate-row-tile");
-	separateRowCheckbox = document.querySelector("#separate-row-checkbox");
+	separateRowText = document.querySelector("#separate-row-text");
+	separateRowControl = document.querySelector("#separate-row-control");
+	//zoom subheader
+	zoomSubheaderTile = document.querySelector("#zoom-subheader-tile");
+	zoomSubheaderText = document.querySelector("#zoom-subheader-text");
+	//map zoom
+	mapZoomTile = document.querySelector("#map-zoom-tile");
+	mapZoomText = document.querySelector("#map-zoom-text");
+	mapZoomControl = document.querySelector("#map-zoom-control");
 	//initial zoom
-	initZoomDecor = document.querySelector("#init-zoom-decor");
-	initZoom = document.querySelector("#initial-zoom");
-	zoomError = document.querySelector("#init-zoom-error");
-	//theme tile
-	themeMenuRipple = document.querySelector("#theme-menu-ripple");
+	initialZoomTile = document.querySelector("#initial-zoom-tile");
+	initialZoomText = document.querySelector("#initial-zoom-text");
+	initialZoomControlDecor = document.querySelector("#initial-zoom-control-decor");
+	initialZoomControlCore = document.querySelector("#initial-zoom-control-core");
+	//initial zoom error
+	initialZoomErrorCollapse = document.querySelector("#initial-zoom-error-collapse");
+	initialZoomErrorText = document.querySelector("#initial-zoom-error-text");
+	//theme subheader
+	themeSubheaderTile = document.querySelector("#theme-subheader-tile");
+	themeSubheaderText = document.querySelector("#theme-subheader-text");
+	//theme
+	themeTile = document.querySelector("#theme-tile");
+	themeText = document.querySelector("#theme-text");
+	themeRipple = document.querySelector("#theme-ripple");
 	
-	//theme picker
-	lightThemePicker = document.querySelector("#theme-picker");
-	deepThemePicker = document.querySelector("html /deep/ #theme-picker");
+	//theme dialog
+	lightThemeDialog = document.querySelector("#theme-dialog");
+	deepThemeDialog = document.querySelector("html /deep/ #theme-dialog");
 	//colors
 	green = "#4CAF50";
 	indigo = "#3F51B5";
 	brown = "#795548";
 	//cards
-	greenCard = document.querySelector("html /deep/ #green-card");
-	indigoCard = document.querySelector("html /deep/ #indigo-card");
-	brownCard = document.querySelector("html /deep/ #brown-card");
+	themeGreenCard = document.querySelector("html /deep/ #theme-green-card");
+	themeIndigoCard = document.querySelector("html /deep/ #theme-indigo-card");
+	themeBrownCard = document.querySelector("html /deep/ #theme-brown-card");
 	
 	//about dialog
 	lightAboutDialog = document.querySelector("#about-dialog");
+	deepAboutDialog = document.querySelector("html /deep/ #theme-dialog");
 	
 	//non-visual elements
 	//media query
-	smallScreen = document.querySelector("#smallScreen");
-	//local storage
-	defaultUI = document.querySelector("#defaultUI");
-	showZoomButtons = document.querySelector("#showZoomButtons");
-	separateRow = document.querySelector("#separateRow");
-	initZoomLS = document.querySelector("#initialZoom");
+	smallScreenQuery = document.querySelector("#small-screen-query");
+	defaultUILS = document.querySelector("#defaultUI-LS");
+	showZoomButtonsLS = document.querySelector("#show-zoom-buttons-LS");
+	separateRowLS = document.querySelector("#separate-row-LS");
+	mapZoomLS = document.querySelector("#map-zoom-LS");
+	initialZoomLS = document.querySelector("#initial-zoom-LS");
+	themeLS = document.querySelector("#theme-LS");
 	
 	map.fire("vars-set");
 });

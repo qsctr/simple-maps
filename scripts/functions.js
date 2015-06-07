@@ -67,22 +67,22 @@ document.addEventListener("vars-set", function () {
   checkTheme = function () {
     if (template.theme === "indigo") {
       applyTheme(indigo);
-      greenCard.className = "";
-      indigoCard.className = "white";
-      brownCard.className = "";
+      themeGreenCard.className = "";
+      themeIndigoCard.className = "white";
+      themeBrownCard.className = "";
     }
     else if (template.theme === "brown") {
       applyTheme(brown);
-      greenCard.className = "";
-      indigoCard.className = "";
-      brownCard.className = "white";
+      themeGreenCard.className = "";
+      themeIndigoCard.className = "";
+      themeBrownCard.className = "white";
     }
     else {
       template.theme = "green";
       applyTheme(green);
-      greenCard.className = "white";
-      indigoCard.className = "";
-      brownCard.className = "";
+      themeGreenCard.className = "white";
+      themeIndigoCard.className = "";
+      themeBrownCard.className = "";
     }
   };
 

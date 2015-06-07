@@ -19,56 +19,75 @@
 
   <body fullbleed unresolved>
     <template is="auto-binding" id="template">
-      <core-drawer-panel rightDrawer forceNarrow disableEdgeSwipe>
-        <core-header-panel main>
+      <!--
+        ID names:
+          x = main or settings
+            header-panel: x-header-panel
+            toolbar: x-toolbar
+            title: x-title
+            subtitle: x-subtitle
+          toolbar buttons:
+            x-button
+      -->
+      <core-drawer-panel rightDrawer forceNarrow disableEdgeSwipe id="drawer-panel">
+        <core-header-panel main id="main-header-panel">
           <core-toolbar id="main-toolbar"><!--class="medium-tall"-->
           
-            <core-icon icon="maps:map"></core-icon>
-            <div>
+            <core-icon icon="maps:map" id="map-icon"></core-icon>
+            <div id="main-title">
               Simple Maps
             </div>
             <div flex></div>
               
             <div flex class="middle can-middle"></div>
-            <paper-icon-button icon="add" class="middle can-middle" id="zoom-in"
+            <paper-icon-button icon="add" class="middle can-middle" id="zoom-in-button"
             ></paper-icon-button>
-            <paper-icon-button icon="remove" class="middle can-middle" id="zoom-out"></paper-icon-button>
+            <paper-icon-button icon="remove" class="middle can-middle" id="zoom-out-button"></paper-icon-button>
             <paper-slider class="middle can-middle" min="0" max="20" value="{{zoomLevel}}" title="zoom" id="zoom-slider"></paper-slider>
             <!--<paper-icon-button icon="maps:my-location" class="middle can-middle" id="location-button"></paper-icon-button>-->
             
-            <paper-icon-button icon="help" id="about-icon"></paper-icon-button>
-            <paper-icon-button icon="settings" core-drawer-toggle
+            <paper-icon-button icon="help" id="about-button"></paper-icon-button>
+            <paper-icon-button icon="settings" id="settings-button" core-drawer-toggle
             ></paper-icon-button>
             
           </core-toolbar>
-          <google-map id="map" fit disableDefaultUI="true" zoomable="{{zoomOn}}"
+          <google-map id="map" fit disableDefaultUI="true" zoomable="{{mapZoom}}"
           zoom="{{zoomLevel}}"></google-map>
         </core-header-panel>
-        <core-header-panel drawer>
-          <core-toolbar class="medium-tall">
-            <div>
+        <core-header-panel drawer id="settings-header-panel">
+          <core-toolbar class="medium-tall" id="settings-toolbar">
+            <div id="settings-title">
               Settings
             </div>
-            <div class="middle secondary">
+            <div class="middle secondary" id="settings-subtitle">
               All settings are autosaved in HTML5 Local Storage
             </div>
           </core-toolbar>
           <div fit id="settings-menu" vertical layout>
-            <div class="list-tile-single" horizontal layout center>
-              <div class="subheader">
+            <!--
+              ID names:
+                subheader:
+                  tile: x-subheader-tile
+                  text: x-subheader-text
+                setting:
+                  tile: x-tile
+                  text: x-text
+                  control: x-control
+            -->
+            <div class="list-tile-single" horizontal layout center id="controls-subheader-tile">
+              <div class="subheader" id="controls-subheader-text">
                 Controls
               </div>
             </div>
-            <div class="list-tile-double" horizontal layout center>
-              <div class="list-text">
+            <div class="list-tile-double" horizontal layout center id="defaultUI-tile">
+              <div class="list-text" id="defaultUI-text">
                   Show default Google Maps controls
               </div>
               <div flex></div>
-              <paper-checkbox class="list-control" checked="{{defaultUI}}"
-              ></paper-checkbox>
+              <paper-checkbox class="list-control" checked="{{defaultUI}}" id="defaultUI-control"></paper-checkbox>
             </div>
-            <div class="list-tile-single" horizontal layout center>
-              <div class="list-text" horizontal layout center>
+            <div class="list-tile-single" horizontal layout center id="show-zoom-buttons-tile">
+              <div class="list-text" horizontal layout center id="show-zoom-buttons-text">
                 <div>Show</div>
                 <core-icon icon="add" class="inline"></core-icon>
                 <div>and</div>
@@ -76,53 +95,52 @@
                 <div>buttons</div>
               </div>
               <div flex></div>
-              <paper-checkbox id="zoom-buttons-checkbox" class="list-control" checked="true"></paper-checkbox>
+              <paper-checkbox id="show-zoom-buttons-control" class="list-control" checked="true"></paper-checkbox>
             </div>
             <div id="separate-row-tile" class="list-tile-double" horizontal layout center>
-              <div class="list-text">
+              <div class="list-text" id="separate-row-text">
                 Show controls on separate row
               </div>
               <div flex></div>
-              <paper-checkbox id="separate-row-checkbox" class="list-control" checked></paper-checkbox>
+              <paper-checkbox id="separate-row-control" class="list-control" checked></paper-checkbox>
             </div>
-            <div class="list-tile-single" horizontal layout center>
-              <div class="subheader">
+            <div class="list-tile-single" horizontal layout center id="zoom-subheader-tile">
+              <div class="subheader" id="zoom-subheader-text">
                 Zoom
               </div>
             </div>
-            <div class="list-tile-double" horizontal layout center>
-              <div class="list-text">
+            <div class="list-tile-double" horizontal layout center id="map-zoom-tile">
+              <div class="list-text" id="map-zoom-text">
                 Enable zooming by scrolling on the map
               </div>
               <div flex></div>
-              <paper-checkbox class="list-control" checked="{{zoomOn}}"
-              ></paper-checkbox>
+              <paper-checkbox class="list-control" checked="{{mapZoom}}" id="map-zoom-control"></paper-checkbox>
             </div>
-            <div class="list-tile-single" horizontal layout center>
-              <div class="list-text">
+            <div class="list-tile-single" horizontal layout center id="initial-zoom-tile">
+              <div class="list-text" id="initial-zoom-text">
                 Zoom on startup
               </div>
               <div flex></div>
               <paper-input-decorator class="list-input"
-              id="init-zoom-decor">
+              id="initial-zoom-control-decor">
                 <input is="core-input" type="number" min="0" max="20"
-                id="initial-zoom" value="{{initialZoom}}">
+                id="initial-zoom-control-core" value="{{initialZoom}}">
               </paper-input-decorator>
             </div>
-            <core-collapse id="init-zoom-error">
-              <div class="error" vertical layout>
-                <div class="inner-error">
+            <core-collapse id="initial-zoom-error-collapse">
+              <div class="error" vertical layout id="initial-zoom-error-tile">
+                <div class="inner-error" id="initial-zoom-error-text">
                   Zoom level must be a number between 0 and 20 (inclusive)
                 </div>
               </div>
             </core-collapse>
-            <div class="list-tile-single" horizontal layout center>
-              <div class="subheader">
+            <div class="list-tile-single" horizontal layout center id="theme-subheader-tile">
+              <div class="subheader" id="theme-subheader-text">
                 Theme
               </div>
             </div>
-            <div class="list-tile-single" horizontal layout center relative>
-              <div class="list-text">
+            <div class="list-tile-single" horizontal layout center relative id="theme-tile">
+              <div class="list-text" id="theme-text">
                 <div>
                   Theme color
                 </div>
@@ -130,32 +148,37 @@
                   {{theme}}
                 </div>
               </div>
-              <paper-ripple fit id="theme-menu-ripple"></paper-ripple>
+              <paper-ripple fit id="theme-ripple"></paper-ripple>
             </div>
           </div>
         </core-header-panel>
       </core-drawer-panel>
 
-      <paper-dialog id="theme-picker" transition="core-transition-center">
+       <!--
+         ID Names:
+           dialog:
+             x-dialog
+       -->
+      <paper-dialog id="theme-dialog" transition="core-transition-center">
         <h2>
           Choose a theme color
         </h2>
         <div horizontal center-justified wrap layout>
-          <material-card id="green-card" autoraise=true>
+          <material-card id="theme-green-card" autoraise=true>
             <div fit horizontal center center-justified layout>
               <div>
                 Green
               </div>
             </div>
           </material-card>
-          <material-card id="indigo-card" autoraise=true>
+          <material-card id="theme-indigo-card" autoraise=true>
             <div fit horizontal center center-justified layout>
               <div>
                 Indigo
               </div>
             </div>
           </material-card>
-          <material-card id="brown-card" autoraise=true>
+          <material-card id="theme-brown-card" autoraise=true>
             <div fit horizontal center center-justified layout>
               <div>
                 Brown
@@ -170,8 +193,8 @@
           <paper-icon-button icon="close" class="black-54" core-overlay-toggle
           ></paper-icon-button>
         </div>
-        <div id="about">
-          <div id="para-container">
+        <div id="about-container-container">
+          <div id="about-container">
             <p>
             The source code of this website is
             <a href="http://www.github.com/qsctr/simple-maps">on Github</a>.
@@ -191,7 +214,7 @@
               Google Maps website click the big maps icon below.
             </p>
           </div>
-          <div horizontal around-justified layout id="images-container">
+          <div horizontal around-justified layout id="about-images-container">
             <paper-button>
               <a href="http://www.polymer-project.org">
                 <core-image src="images/polymer.svg" sizing="contain"
@@ -209,13 +232,13 @@
       </paper-dialog>
 
       <!--non-visual elements-->
-      <core-media-query id="smallScreen" query="max-width: 800px" queryMatches="{{smallScreen}}"></core-media-query>
-      <core-localstorage name="defaultUI" id="defaultUI" value="{{defaultUI}}"></core-localstorage>
-      <core-localstorage name="showZoomButtons" id="showZoomButtons" value="" useRaw></core-localstorage>
-      <core-localstorage name="separateRow" id="separateRow" value="" useRaw></core-localstorage>
-      <core-localstorage name="zoomOn" id="zoomOn" value="{{zoomOn}}"></core-localstorage>
-      <core-localstorage name="initialZoom" id="initialZoom"  value="{{initialZoom}}"></core-localstorage>
-      <core-localstorage name="theme" id="theme" value={{theme}}></core-localstorage>
+      <core-media-query id="small-screen-query" query="max-width: 800px" queryMatches="{{smallScreen}}"></core-media-query>
+      <core-localstorage name="defaultUILS" id="defaultUI-LS" value="{{defaultUI}}"></core-localstorage>
+      <core-localstorage name="showZoomButtonsLS" id="show-zoom-buttons-LS" value="" useRaw></core-localstorage>
+      <core-localstorage name="separateRowLS" id="separate-row-LS" value="" useRaw></core-localstorage>
+      <core-localstorage name="mapZoomLS" id="map-zoom-LS" value="{{mapZoom}}"></core-localstorage>
+      <core-localstorage name="initialZoomLS" id="initial-zoom-LS"  value="{{initialZoom}}"></core-localstorage>
+      <core-localstorage name="themeLS" id="theme-LS" value={{theme}}></core-localstorage>
     </template>
     <script src="bower_components/prototypejs-bower/prototype.js"></script>
     <script src="scripts/vars.js"></script>

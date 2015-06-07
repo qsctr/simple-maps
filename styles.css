@@ -124,29 +124,29 @@ html /deep/ .link-image{
 html /deep/ material-card{
   padding: 0;
 }
-html /deep/ #theme-picker material-card::shadow .content{
+html /deep/ #theme-dialog material-card::shadow .content{
   width: 72px;
   height: 72px;
   border-radius: 2px;
 }
-html /deep/ #theme-picker material-card{
+html /deep/ #theme-dialog material-card{
   margin-left: 8px;
   margin-right: 8px;
 }
-html /deep/ #theme-picker::shadow #scroller{
+html /deep/ #theme-dialog::shadow #scroller{
   padding-bottom: 32px;
   padding-top: 0;
 }
-html /deep/ #green-card{
+html /deep/ #theme-green-card{
   background-color: #4CAF50;
 }
-html /deep/ #indigo-card{
+html /deep/ #theme-indigo-card{
   background-color: #3F51B5;
 }
-html /deep/ #brown-card{
+html /deep/ #theme-brown-card{
   background-color: #795548;
 }
-html /deep/ #theme-picker h2{
+html /deep/ #theme-dialog h2{
   font-size: 24px;
   font-weight: 300;
 }

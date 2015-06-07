@@ -8,43 +8,43 @@ document.addEventListener("functions-set", function () {
   //add event listeners
   //===============================================================================
   //default UI setting localstorage loaded
-  defaultUI.addEventListener("core-localstorage-load", function () {
+  defaultUILS.addEventListener("core-localstorage-load", function () {
     checkDefaultUI();
   });
   
   //show zoom buttons setting localstorage loaded
-  showZoomButtons.addEventListener("core-localstorage-load", function () {
-    if (showZoomButtons.value === true ||
-      showZoomButtons.value === null ||
-      localStorage.getItem("showZoomButtons") === null) {
+  showZoomButtonsLS.addEventListener("core-localstorage-load", function () {
+    if (showZoomButtonsLS.value === "true" ||
+      showZoomButtonsLS.value === null ||
+      localStorage.getItem("showZoomButtonsLS") === null) {
       //setting on or first time visit
-      zoomButtonsCheckbox.checked = true;
+      showZoomButtonsControl.checked = true;
       ZBDisplayOn();
     }
     else {
       //setting off
-      zoomButtonsCheckbox.checked = false;
+      showZoomButtonsControl.checked = false;
       ZBDisplayOff();
     }
   });
 
-  separateRow.addEventListener("core-localstorage-load", function () {
-    if (separateRow.value === true ||
-      separateRow.value === null ||
-      localStorage.getItem("separateRow") === null ||
+  separateRowLS.addEventListener("core-localstorage-load", function () {
+    if (separateRowLS.value === "true" ||
+      separateRowLS.value === null ||
+      localStorage.getItem("separateRowLS") === null ||
       template.smallScreen === true) {
       //setting on or first time visit
-      separateRowCheckbox.checked = true;
+      separateRowControl.checked = true;
       separateRowOn();
     }
     else {
       //setting off
-      separateRowCheckbox.checked = false;
+      separateRowControl.checked = false;
       separateRowOff();
     }
   });
 
-  initZoomLS.addEventListener("core-localstorage-load", function () {
+  initialZoomLS.addEventListener("core-localstorage-load", function () {
     if (template.initialZoom === null) {
       //first time visit
       template.initialZoom = 10;
@@ -60,21 +60,21 @@ document.addEventListener("functions-set", function () {
     template.zoomLevel = template.initialZoom;
   });
 
-  smallScreen.addEventListener("core-media-change", function () {
+  smallScreenQuery.addEventListener("core-media-change", function () {
     if (template.smallScreen === true) {
       //disable option
       separateRowTile.style.color = "rgba(0, 0, 0, 0.26)";
       //force separate row
-      separateRowCheckbox.checked = true;
+      separateRowControl.checked = true;
       separateRowOn();
-      separateRowCheckbox.disabled = true;
+      separateRowControl.disabled = true;
     }
     else {
       //enable option
       separateRowTile.style.color = "rgba(0, 0, 0, 0.87)";
-      separateRowCheckbox.disabled = false;
+      separateRowControl.disabled = false;
       //enable IF the setting was true
-      if (localStorage.getItem("separateRow") === "false") {
+      if (localStorage.getItem("separateRowLS") === "false") {
         separateRowOff();
       }
     }
@@ -86,51 +86,51 @@ document.addEventListener("functions-set", function () {
     checkDefaultUI();
 
     //zoom buttons check
-    if (zoomButtonsCheckbox.checked === true) {
+    if (showZoomButtonsControl.checked === true) {
       ZBDisplayOn();
     }
     else {
       ZBDisplayOff();
     }
-    showZoomButtons.value = zoomButtonsCheckbox.checked;
+    showZoomButtonsLS.value = showZoomButtonsControl.checked;
 
     //separate row check
-    if (separateRowCheckbox.checked === true) {
+    if (separateRowControl.checked === true) {
       separateRowOn();
     }
     else {
       separateRowOff();
     }
-    separateRow.value = separateRowCheckbox.checked;
+    separateRowLS.value = separateRowControl.checked;
   });
 
-  //wait for ripple to finish, then open dialog (a bit slower, but more effecty)
-  themeMenuRipple.addEventListener("core-transitionend", function () {
+  //wait for ripple to finish, then open dialog (a bit slower, but more materialish)
+  themeRipple.addEventListener("core-transitionend", function () {
     //prevent console errors: if the picker is not open, then open it
-    if (lightThemePicker !== null) {
-      lightThemePicker.open();
+    if (lightThemeDialog !== null) {
+      lightThemeDialog.open();
     }
   });
 
   //set theme when cards are chosen
-  greenCard.addEventListener("click", function () {
+  themeGreenCard.addEventListener("click", function () {
     template.theme = "green";
     checkTheme();
-    deepThemePicker.close();
+    deepThemeDialog.close();
   });
-  indigoCard.addEventListener("click", function () {
+  themeIndigoCard.addEventListener("click", function () {
     template.theme = "indigo";
     checkTheme();
-    deepThemePicker.close();
+    deepThemeDialog.close();
   });
-  brownCard.addEventListener("click", function () {
+  themeBrownCard.addEventListener("click", function () {
     template.theme = "brown";
     checkTheme();
-    deepThemePicker.close();
+    deepThemeDialog.close();
   });
 
   //check if zoom is at min or max, then grey out zoom buttons as needed
-  slider.addEventListener("core-change", function () {
+  zoomSlider.addEventListener("core-change", function () {
     checkZoomButtonsColor();
   });
 
@@ -145,18 +145,18 @@ document.addEventListener("functions-set", function () {
   });
 
   //verify initial zoom and open/close error message
-  initZoom.addEventListener("input", function () {
-    initZoomDecor.isInvalid = !initZoom.validity.valid;
+  initialZoomControlCore.addEventListener("input", function () {
+    initialZoomControlDecor.isInvalid = !initZoom.validity.valid;
     if (initZoom.validity.valid) {
-      zoomError.opened = false;
+      initialZoomErrorCollapse.opened = false;
     }
     else {
-      zoomError.opened = true;
+      initialZoomErrorCollapse.opened = true;
     }
   });
 
   //open about dialog
-  aboutIcon.addEventListener("click", function () {
+  aboutButton.addEventListener("click", function () {
     //prevent console errors: if the dialog is not open, then open it
     if (lightAboutDialog !== null) {
       lightAboutDialog.open();
