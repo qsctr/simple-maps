@@ -1,2 +1,4 @@
 # simple-maps
-Material polymer app with google-map element
+Material polymer maps app
+
+For more information go to http://qsctr.github.io/simple-maps and click on the ? icon on the toolbar
