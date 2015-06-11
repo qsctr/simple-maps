@@ -187,49 +187,138 @@
           </material-card>
         </div>
       </paper-dialog>
-      <paper-dialog id="about-dialog" transition="core-transition-center">
-        <div horizontal layout>
-          <div flex></div>
-          <paper-icon-button icon="close" class="black-54" core-overlay-toggle
-          ></paper-icon-button>
-        </div>
-        <div id="about-container-container">
-          <div id="about-container">
-            <p>
-            The source code of this website is
-            <a href="http://www.github.com/qsctr/simple-maps">on Github</a>.
-            </p>
-            <p>
-              This app was made using
-              <a href="http://www.polymer-project.org">Polymer</a>
-              and the
-              <a
-  href="http://googlewebcomponents.github.io/google-map/components/google-map">
-                Google Maps web components element</a>,
-              which uses the
-              <a href="http://developers.google.com/maps/web">Google Maps API</a>.
-            </p>
-            <p>
-              This is a test of the google-map element and Polymer. For the real
-              Google Maps website click the big maps icon below.
-            </p>
-          </div>
-          <div horizontal around-justified layout id="about-images-container">
-            <paper-button>
-              <a href="http://www.polymer-project.org">
-                <core-image src="images/polymer.svg" sizing="contain"
-                class="link-image"></core-image>
-              </a>
+      
+      <paper-action-dialog id="about-dialog" transition="core-transition-center" heading="About">
+        <div id="about-container">
+          <p>
+            Simple Maps is a simple maps app (self-explanatory). The source code is on Github.
+          </p>
+          <a href="https://github.com/qsctr/simple-maps">
+            <paper-button raised>
+              <core-image src="images/github.png" sizing="cover"></core-image>
+              Code on Github
             </paper-button>
-            <paper-button>
-              <a href="http://maps.google.com">
-                <core-image src="images/maps.png" sizing="contain" 
-                class="link-image"></core-image>
-              </a>
+          </a>
+          <h3>
+            Polymer
+          </h3>
+          <p>
+            Simple Maps is made with Polymer. Polymer is a library for web components that can be used to build web apps with material design components. Find out more here:
+          </p>
+          <a href="https://www.polymer-project.org/1.0/docs/start/what-is-polymer.html">
+             <paper-button raised>
+              <core-image src="images/polymer.svg" sizing="contain"></core-image>
+              What is Polymer?
             </paper-button>
-          </div>
+          </a>
+          <p>
+            Polymer 1.0 was recently released at Google I/O 2015. This project currently uses Polymer 0.5, but will be updated to 1.0 in the future.
+          </p>
+          <a href="https://www.polymer-project.org/1.0/">
+            <paper-button raised>
+              <core-image src="images/polymer-1.0.svg" sizing="contain"></core-image>
+              Polymer 1.0 homepage
+            </paper-button>
+          </a>
+          <h3>
+            Map
+          </h3>
+          <p>
+            Simple Maps uses the
+            <marked-element>
+              <google-map></google-map>
+            </marked-element> Polymer element for the map, which uses the Google Maps API.
+          </p>
+          <a href="https://developers.google.com/maps/web">
+            <paper-button raised>
+              <core-image src="images/google-developers.png" sizing="cover"></core-image>
+              Maps Web API
+          </a>
+          <p>
+            And of course the real Google Maps is awesome.
+          </p>
+          <a href="https://www.google.com/maps">
+            <paper-button raised>
+               <core-image src="images/maps.png" sizing="cover"></core-image>
+               Google Maps
+            </paper-button>
+          </a>
+          <h3>
+            Work in progress
+          </h3>
+          <p>
+            Even though this project is fully functional, it is not finished yet. More map services will be added soon, such as Leaflet Maps. More settings like satellite view, startup location, current location, etc. will be added.
+          </p>
+          <h3>
+            Material design
+          </h3>
+          <p>
+            Simple Maps follows material design, a new design language by Google.
+          </p>
+          <a href="https://www.google.com/design/spec/material-design/introduction.html">
+            <paper-button raised>
+              <core-image src="images/google-design.jpg" sizing="cover"></core-image>
+              Material design guidelines
+            </paper-button>
+          </a>
+          <p>
+            Most of the material design components are provided by the Polymer Paper Elements.
+          </p>
+          <a href="https://www.polymer-project.org/0.5/components/paper-elements/demo.html">
+            <paper-button raised>
+              <core-image src="images/paper-elements.png" sizing="contain"></core-image>
+              Polymer paper elements
+            </paper-button>
+          </a>
+          <h3>
+            Credits
+          </h3>
+          <ul>
+            <li>
+              <a href="https://www.polymer-project.org">Polymer</a>: Google
+            </li>
+            <li>
+              <a href="https://developers.google.com/maps/web">Maps web API</a>: Google
+            </li>
+            <li>
+              <a href="https://www.google.com/maps">Google Maps</a>: Google
+            </li>
+            <li>
+              <a href="https://www.google.com/design/spec">Material design</a>: Google
+            </li>
+            <li>
+              <a href="https://www.polymer-project.org/0.5/components/paper-elements/demo.html">Paper Elements</a> and <a href="https://www.polymer-project.org/0.5/components/core-elements/demo.html">Core Elements</a>: Google
+            </li>
+            <li>
+              <a href="http://www.google.com/design/icons">Icons</a>: Google
+            </li>
+            <li>
+              <a href="http://webcomponents.org">Web Components</a>: (mostly) Google
+            </li>
+            <li>
+              Other elements:
+            </li>
+              <ul>
+                <li>
+                  <a href="https://github.com/googlewebcomponents/google-map">google-map</a>: Google
+                </li>
+                <li>
+                  <a href="https://github.com/Polymer/marked-element">marked-element</a>: Google
+                </li>
+                <li>
+                  <a href="https://github.com/lemabu/material-card">material-card</a>: lemabu
+                </li>
+              </ul>
+            <li>
+              Images in this about page: wherever the button links to
+            </li>
+            <li>
+              Website hosting: Github Pages
+            </li>
+          </ul>
         </div>
-      </paper-dialog>
+        <paper-button affirmative class="accent-color">Dismiss</paper-button>
+      </paper-action-dialog>
 
       <!--non-visual elements-->
       <core-media-query id="small-screen-query" query="max-width: 800px" queryMatches="{{smallScreen}}"></core-media-query>

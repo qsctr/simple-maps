@@ -2,5 +2,9 @@
 {
 	"javascript.validate.lint.unusedVariables": "ignore",
 	"javascript.validate.lint.unusedFunctions": "ignore",
-	"javascript.validate.lint.undeclaredVariables": "ignore"
+	"javascript.validate.lint.undeclaredVariables": "ignore",
+	"search.excludeFolders": [
+		".git",
+		"node_modules"
+	]
 }

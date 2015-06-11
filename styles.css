@@ -21,9 +21,8 @@ body{
 }
 
 core-toolbar{
-  /*background-color: #4CAF50;*/
+  /*background-color: theme;*/
   color: white;
-  font-weight: 300;
 }
 paper-slider::shadow #sliderBar::shadow #activeProgress{
   background-color: #FF6E40;
@@ -34,7 +33,6 @@ paper-slider::shadow #sliderKnobInner{
 .secondary{
   font-size: 14px;
 }
-
 #settings-menu{
   background-color: white;
   padding-bottom: 8px;
@@ -55,7 +53,7 @@ paper-slider::shadow #sliderKnobInner{
 }
 .subheader{
   margin-left: 16px;
-  /*color: #4CAF50;*/
+  /*color: theme;*/
   font-size: 14px;
 }
 .list-text{
@@ -109,17 +107,50 @@ paper-input-decorator /deep/ .focused-underline{
 
 html /deep/ #about-dialog::shadow #scroller{
   width: 400px;
+  margin-top: 16px;
 }
-html /deep/ .black-54{
-  color: rgba(0, 0, 0, 0.54);
+html /deep/ #about-dialog::shadow #scroller h1{
+  font-weight: 400;
+  margin-top: -8px;
 }
-html /deep/ p a{
+html /deep/ #about-dialog h3{
+  font-size: 20px;
+  font-weight: 400;
+}
+html /deep/ paper-button{
+  font-size: 14px;
+}
+html /deep/ #about-dialog #about-container paper-button{
+  background-color: #FF6E40;
+  color: black;
+  margin-left: 0;
+}
+html /deep/ #about-dialog #about-container paper-button core-image{
+  height: 24px;
+  width: 24px;
+  margin-right: 6px;
+}
+html /deep/ #about-dialog #about-container a{
+  text-decoration: none;
+}
+html /deep/ #about-dialog marked-element /deep/ pre{
+  background-color: lightgray;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 4px;
+  border-radius: 5px;
+}
+html /deep/ #about-dialog marked-element /deep/ pre code{
+  white-space: pre-line;
+}
+html /deep/ p a, html /deep/ #about-dialog #about-container ul li a{
   color: #FF6E40;
   text-decoration: none;
 }
-html /deep/ .link-image{
-  width: 100px;
-  height: 100px;
+html /deep/ .accent-color{
+  color: #FF6E40;
 }
 html /deep/ material-card{
   padding: 0;
